@@ -131,23 +131,23 @@ body {
 }
 
 /* Nav CTA matches .btn-primary */
-.nav-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1.25rem;
-    background: var(--gradient-primary);
+.nav-links .nav-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.5rem 1.25rem !important;
+    background: var(--gradient-primary) !important;
     color: #fff !important;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
-    border: none;
-    font-size: 1rem;
+    border-radius: 0.5rem !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: none !important;
+    font-size: 1rem !important;
 }
-.nav-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+.nav-links .nav-cta:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
     color: #fff !important;
 }
 
@@ -312,37 +312,23 @@ body {
 }
 
 .feature-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
 .feature-icon svg {
     display: block;
     margin: 0 auto 1rem auto;
-    width: 3rem;
-    height: 3rem;
-    stroke-width: 2.5;
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 2;
     background: none;
     border-radius: 0.5rem;
     box-shadow: none;
     transition: stroke 0.3s;
 }
 
-.feature-card:nth-child(2) .feature-icon svg {
-    stroke: var(--secondary-color);
-}
-.feature-card:nth-child(3) .feature-icon svg {
-    stroke: var(--accent-color);
-}
-.feature-card:nth-child(4) .feature-icon svg {
-    stroke: var(--primary-dark);
-}
-.feature-card:nth-child(5) .feature-icon svg {
-    stroke: var(--secondary-color);
-}
-.feature-card:nth-child(6) .feature-icon svg {
-    stroke: var(--accent-color);
-}
+/* Feature icon colors are handled by specific classes in the HTML */
 
 .feature-card h3 {
     font-size: 1.25rem;
