@@ -55,9 +55,9 @@ website/
 ├── images/             # Image assets
 │   ├── logo.png        # SketchPrompt logo
 │   ├── favicon.png     # Favicon
-│   ├── hero-screenshot.png  # Hero section screenshot
-│   ├── usage-demo.png  # Usage demonstration image
-│   └── og-image.png    # Open Graph image for social sharing
+│   ├── hero-screenshot.png  # Hero section screenshot (placeholder)
+│   ├── usage-demo.png  # Usage demonstration image (placeholder)
+│   └── og-image.png    # Open Graph image for social sharing (placeholder)
 └── README.md           # This file
 ```
 
@@ -69,66 +69,92 @@ The website uses CSS custom properties for easy color customization. Edit the `:
 ```css
 :root {
     --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
     --secondary-color: #8b5cf6;
     --accent-color: #06b6d4;
     /* ... other colors */
 }
 ```
 
-### Content
-- Update the hero section in `index.html`
-- Modify feature descriptions
-- Update installation steps
-- Edit roadmap content
+### Content Updates
+- **Hero Section**: Update the main headline and description in `index.html`
+- **Features**: Modify the feature cards to reflect current capabilities
+- **Installation**: Update installation steps as the extension evolves
+- **Roadmap**: Keep the development timeline current
 
-### Images
-Replace the placeholder images in the `images/` directory:
+## 📸 Missing Images
+
+The following images are currently placeholders and need to be created:
 - `hero-screenshot.png` - Screenshot of SketchPrompt in action
-- `usage-demo.png` - Demo showing how to use the extension
-- `og-image.png` - Social media sharing image (1200x630px)
+- `usage-demo.png` - Demonstration of usage workflow
+- `og-image.png` - Open Graph image for social sharing
+- `visual-thinking-illustration.svg` - Hero illustration
 
-## 🔧 Features
+## 🔧 Development Notes
 
-- **Responsive Design** - Works on all devices
-- **Modern UI** - Clean, professional design
-- **Smooth Animations** - CSS transitions and JavaScript animations
-- **Mobile Navigation** - Hamburger menu for mobile devices
-- **Copy Code** - Click to copy installation commands
-- **SEO Optimized** - Meta tags and Open Graph support
-- **Accessibility** - Keyboard navigation and screen reader support
+### Current State
+- ✅ Responsive design with modern CSS
+- ✅ Interactive JavaScript features
+- ✅ Development status banner
+- ✅ Accurate installation instructions
+- ❌ Missing hero screenshot
+- ❌ Missing usage demo images
+- ❌ Missing social sharing images
 
-## 📱 Mobile Support
+### Next Steps
+1. Create actual screenshots of SketchPrompt in action
+2. Add usage demonstration images
+3. Create social sharing images
+4. Update content as features are completed
+5. Add analytics tracking
+6. Optimize for performance
 
-The website is fully responsive and includes:
-- Mobile-first design approach
-- Touch-friendly navigation
-- Optimized images and layouts
+## 🚀 Deployment
+
+### GitHub Pages
+1. Push to GitHub repository
+2. Enable GitHub Pages in repository settings
+3. Configure custom domain if desired
+
+### Netlify
+1. Connect GitHub repository to Netlify
+2. Configure build settings (not needed for static site)
+3. Deploy automatically on push
+
+### Vercel
+1. Import GitHub repository to Vercel
+2. Configure as static site
+3. Deploy automatically on push
+
+## 📊 Analytics
+
+Consider adding analytics to track website performance:
+- Google Analytics
+- Plausible Analytics
+- Simple Analytics
+
+## 🔍 SEO
+
+The website includes:
+- Meta tags for social sharing
+- Open Graph tags
+- Twitter Card tags
+- Semantic HTML structure
 - Fast loading times
 
-## 🚀 Performance
+## 📱 Mobile Optimization
 
-- Optimized images and assets
-- Minified CSS and JavaScript (for production)
+The website is fully responsive and optimized for:
+- Mobile devices
+- Tablets
+- Desktop computers
+- Various screen sizes
+
+## 🎯 Performance
+
+Optimizations include:
+- Minified CSS and JavaScript
+- Optimized images
 - Fast loading times
-- SEO best practices
-
-## 🔗 Links
-
-- **GitHub Repository**: https://github.com/pascalx-git/SketchPrompt
-- **Cursor IDE**: https://cursor.sh
-- **TLDraw**: https://tldraw.dev
-
-## 📄 License
-
-MIT License - same as the main SketchPrompt project.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Make your changes
-3. Test locally
-4. Submit a pull request
-
----
-
-**Note**: Replace placeholder images with actual screenshots and demo images before deploying to production. 
+- Efficient animations
+- Progressive enhancement 
