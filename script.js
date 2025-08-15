@@ -350,30 +350,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }, 500); // Reduced delay for better responsiveness
         }
-        
-        // Special handling for Usage nav link - open quick-start tab
-        if (this.getAttribute('href') === '#usage' && this.textContent.trim().includes('Usage')) {
-          setTimeout(() => {
-            // Find the quick-start tab button and click it
-            const quickStartTab = document.querySelector('[data-tab="quick-start"]');
-            if (quickStartTab) {
-              // Manually trigger the tab switching logic
-              const tabContainer = quickStartTab.closest('.section-tabs');
-              if (tabContainer) {
-                // Remove active class from all buttons and panes
-                tabContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                tabContainer.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-                
-                // Add active class to quick-start button and pane
-                quickStartTab.classList.add('active');
-                const quickStartPane = document.querySelector('#quick-start-tab');
-                if (quickStartPane) {
-                  quickStartPane.classList.add('active');
-                }
-              }
-            }
-          }, 500); // Same delay for consistency
-        }
       }
     });
   });
@@ -555,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modal-content">
                 <div class="modal-header">
                     <h2>Choose your code editor</h2>
-                    <button class="modal-close" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</button>
+                    <button class="modal-close" data-umami-event="modal-editor-selection-closed">&times;</button>
                 </div>
                 <p class="modal-description">SketchPrompt is an extension that works with many code editors. Select your editor to install SketchPrompt directly.</p>
                 <div class="modal-editor-options">
@@ -564,21 +540,21 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img src="https://cursor.sh/favicon.ico" alt="Cursor" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
                             <span class="modal-editor-name">Cursor</span>
                         </div>
-                        <button class="btn btn-secondary modal-install-btn" data-editor="cursor">Install SketchPrompt</button>
+                        <button class="btn btn-secondary modal-install-btn" data-editor="cursor" data-umami-event="modal-install-cursor">Install SketchPrompt</button>
                     </div>
                     <div class="modal-editor-option" data-editor="windsurf">
                         <div class="modal-editor-info">
                             <img src="https://windsurf.com/favicon.ico" alt="Windsurf" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
                             <span class="modal-editor-name">Windsurf</span>
                         </div>
-                        <button class="btn btn-secondary modal-install-btn" data-editor="windsurf">Install SketchPrompt</button>
+                        <button class="btn btn-secondary modal-install-btn" data-editor="windsurf" data-umami-event="modal-install-windsurf">Install SketchPrompt</button>
                     </div>
                     <div class="modal-editor-option" data-editor="firebase-studio">
                         <div class="modal-editor-info">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROklQN6uy2soSSqi6okf-w-yyymRbETduSeA&s" alt="Google Firebase Studio" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
                             <span class="modal-editor-name">Google Firebase Studio</span>
                         </div>
-                        <a href="https://firebase.studio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary modal-visit-btn">Visit Firebase Studio</a>
+                        <a href="https://firebase.studio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary modal-visit-btn" data-umami-event="modal-firebase-studio-visit">Visit Firebase Studio</a>
                     </div>
                 </div>
                 <div class="modal-note">
@@ -589,12 +565,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(modal);
         
+        // Track modal opening
+        if (window.umami) {
+            window.umami.track('modal-editor-selection-opened');
+        }
+        
         // Add event listeners to modal install buttons
         const modalInstallButtons = modal.querySelectorAll('.modal-install-btn');
         modalInstallButtons.forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const editor = this.getAttribute('data-editor');
+                
+                // Track install attempt
+                if (window.umami) {
+                    window.umami.track('modal-install-attempted', { editor: editor });
+                }
+                
                 modal.remove();
                 installExtension(editor);
             });
@@ -604,6 +591,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalVisitBtn = modal.querySelector('.modal-visit-btn');
         if (modalVisitBtn) {
             modalVisitBtn.addEventListener('click', function(e) {
+                // Track Firebase Studio visit
+                if (window.umami) {
+                    window.umami.track('modal-firebase-studio-visit');
+                }
                 // Let the link work normally - no preventDefault
                 modal.remove();
             });
@@ -612,9 +603,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close modal when clicking outside
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
+                // Track modal closed by clicking outside
+                if (window.umami) {
+                    window.umami.track('modal-editor-selection-closed', { method: 'click-outside' });
+                }
                 modal.remove();
             }
         });
+        
+        // Track modal close button click
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                // Track modal closed by close button
+                if (window.umami) {
+                    window.umami.track('modal-editor-selection-closed', { method: 'close-button' });
+                }
+            });
+        }
     }
     
     function installExtension(editor) {
