@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modal-content">
                 <div class="modal-header">
                     <h2>Choose your code editor</h2>
-                    <button class="modal-close" data-umami-event="modal-editor-selection-closed">&times;</button>
+                    <button class="modal-close">&times;</button>
                 </div>
                 <p class="modal-description">SketchPrompt is an extension that works with many code editors. Select your editor to install SketchPrompt directly.</p>
                 <div class="modal-editor-options">
@@ -540,21 +540,21 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img src="https://cursor.sh/favicon.ico" alt="Cursor" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
                             <span class="modal-editor-name">Cursor</span>
                         </div>
-                        <button class="btn btn-secondary modal-install-btn" data-editor="cursor" data-umami-event="modal-install-cursor">Install SketchPrompt</button>
+                        <button class="btn btn-secondary modal-install-btn" data-editor="cursor" data-umami-event="modal-install-cursor">Install</button>
                     </div>
                     <div class="modal-editor-option" data-editor="windsurf">
                         <div class="modal-editor-info">
                             <img src="https://windsurf.com/favicon.ico" alt="Windsurf" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
                             <span class="modal-editor-name">Windsurf</span>
                         </div>
-                        <button class="btn btn-secondary modal-install-btn" data-editor="windsurf" data-umami-event="modal-install-windsurf">Install SketchPrompt</button>
+                        <button class="btn btn-secondary modal-install-btn" data-editor="windsurf" data-umami-event="modal-install-windsurf">Install</button>
                     </div>
                     <div class="modal-editor-option" data-editor="firebase-studio">
                         <div class="modal-editor-info">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROklQN6uy2soSSqi6okf-w-yyymRbETduSeA&s" alt="Google Firebase Studio" class="modal-editor-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQgMTBIMjJMMTQgMTJMMTYgMjJMMTIgMThMMTAgMjJMMTIgMTJMMiAxMEwxMiAyWiIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K'">
-                            <span class="modal-editor-name">Google Firebase Studio</span>
+                            <span class="modal-editor-name">Firebase Studio</span>
                         </div>
-                        <a href="https://firebase.studio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary modal-visit-btn" data-umami-event="modal-firebase-studio-visit">Visit Firebase Studio</a>
+                        <button class="btn btn-secondary modal-visit-btn" data-umami-event="modal-firebase-studio-visit" onclick="window.open('https://firebase.studio', '_blank', 'noopener,noreferrer')">Install</button>
                     </div>
                 </div>
                 <div class="modal-note">
@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Handle Firebase Studio visit link (not an install action)
+        // Handle Firebase Studio visit button (not an install action)
         const modalVisitBtn = modal.querySelector('.modal-visit-btn');
         if (modalVisitBtn) {
             modalVisitBtn.addEventListener('click', function(e) {
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (window.umami) {
                     window.umami.track('modal-firebase-studio-visit');
                 }
-                // Let the link work normally - no preventDefault
+                // Close modal after tracking
                 modal.remove();
             });
         }
@@ -619,6 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (window.umami) {
                     window.umami.track('modal-editor-selection-closed', { method: 'close-button' });
                 }
+                modal.remove();
             });
         }
     }
