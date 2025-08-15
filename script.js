@@ -326,6 +326,30 @@ document.addEventListener('DOMContentLoaded', function() {
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
+        
+        // Special handling for Demo nav link - open demos tab
+        if (this.getAttribute('href') === '#usage' && this.textContent.trim().includes('Demo')) {
+          setTimeout(() => {
+            // Find the demos tab button and click it
+            const demosTab = document.querySelector('[data-tab="demos"]');
+            if (demosTab) {
+              // Manually trigger the tab switching logic
+              const tabContainer = demosTab.closest('.section-tabs');
+              if (tabContainer) {
+                // Remove active class from all buttons and panes
+                tabContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                tabContainer.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to demos button and pane
+                demosTab.classList.add('active');
+                const demosPane = document.querySelector('#demos-tab');
+                if (demosPane) {
+                  demosPane.classList.add('active');
+                }
+              }
+            }
+          }, 500); // Reduced delay for better responsiveness
+        }
       }
     });
   });

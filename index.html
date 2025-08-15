@@ -46,6 +46,7 @@
             
             <div class="nav-links">
                 <a href="#features" data-umami-event="nav-features">Features</a>
+                <a href="#usage" data-umami-event="nav-demo">Demo</a>
                 <a href="#installation" data-umami-event="nav-installation">Installation</a>
                 <a href="#usage" data-umami-event="nav-usage">Usage</a>
                 <a href="#security" data-umami-event="nav-security">Security</a>
@@ -428,44 +429,65 @@
     <section id="usage" class="usage">
         <div class="container">
             <h2 class="section-title">How to Use</h2>
-            <div class="installation-method">
-                <h3>Get Started with SketchPrompt</h3>
-                <p>Follow these steps to create your first sketch in any OpenVSX-compatible editor</p>
-                <div class="installation-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                        <h3>Open the Command Palette</h3>
-                            <p>Press <code>Cmd/Ctrl + Shift + P</code> in your VS Code-based editor.</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Create a New Sketch</h3>
-                            <p>
-                                <strong>Option 1:</strong> Type and select <strong>SketchPrompt: New Sketch</strong> in the Command Palette.<br>
-                                <strong>Option 2:</strong> <span style="white-space:nowrap">Right-click</span> in the file explorer and choose <strong>New SketchPrompt Sketch</strong> from the context menu.
-                            </p>
+            <div class="section-tabs">
+                <div class="tab-buttons compact-tabs">
+                    <button class="tab-button active" data-tab="quick-start" data-umami-event="tab-quick-start">Quick Start</button>
+                    <button class="tab-button" data-tab="demos" data-umami-event="tab-demos">Demos</button>
                 </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                        <h3>Start Sketching</h3>
-                        <p>Use the visual editor to draw, brainstorm, and prompt AI with your ideas!</p>
+                
+                <div class="tab-content">
+                    <div id="quick-start-tab" class="tab-pane active">
+                        <div class="installation-method">
+                            <h3>Get Started with SketchPrompt</h3>
+                            <p>Follow these steps to create your first sketch in any OpenVSX-compatible editor</p>
+                            <div class="installation-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                    <h3>Open the Command Palette</h3>
+                                        <p>Press <code>Cmd/Ctrl + Shift + P</code> in your VS Code-based editor.</p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h3>Create a New Sketch</h3>
+                                        <p>
+                                            <strong>Option 1:</strong> Type and select <strong>SketchPrompt: New Sketch</strong> in the Command Palette.<br>
+                                            <strong>Option 2:</strong> <span style="white-space:nowrap">Right-click</span> in the file explorer and choose <strong>New SketchPrompt Sketch</strong> from the context menu.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                    <h3>Start Sketching</h3>
+                                    <p>Use the visual editor to draw, brainstorm, and prompt AI with your ideas!</p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h3>Copy Your Sketch to a Prompt</h3>
+                                        <p>
+                                            <strong>Option 1:</strong> Take a screenshot of your sketch using your system's screenshot shortcut
+                                            (e.g., <code>Cmd + Shift + 4</code> on Mac, <code>Win + Shift + S</code> on Windows).<br>
+                                            <strong>Option 2:</strong> Select the part of your sketch, <strong>right-click</strong>, choose <strong>Copy as PNG</strong>,
+                                            then paste it directly into any AI chat.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Copy Your Sketch to a Prompt</h3>
-                            <p>
-                                <strong>Option 1:</strong> Take a screenshot of your sketch using your system's screenshot shortcut
-                                (e.g., <code>Cmd + Shift + 4</code> on Mac, <code>Win + Shift + S</code> on Windows).<br>
-                                <strong>Option 2:</strong> Select the part of your sketch, <strong>right-click</strong>, choose <strong>Copy as PNG</strong>,
-                                then paste it directly into any AI chat.
-                            </p>
+                    
+                    <div id="demos-tab" class="tab-pane">
+                        <div class="demos-content" id="demo">
+                            <h3>Watch SketchPrompt in Action</h3>
+                            <p>See real examples of how SketchPrompt can enhance your AI coding workflow</p>
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=ZkpTlTsomnW-O_xG&amp;list=PLXl3fKGFsREjiFtJAoL2Zv4janJT-jjbu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
