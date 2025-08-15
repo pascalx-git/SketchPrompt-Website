@@ -350,6 +350,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }, 500); // Reduced delay for better responsiveness
         }
+        
+        // Special handling for Usage nav link - open quick-start tab
+        if (this.getAttribute('href') === '#usage' && this.textContent.trim().includes('Usage')) {
+          setTimeout(() => {
+            // Find the quick-start tab button and click it
+            const quickStartTab = document.querySelector('[data-tab="quick-start"]');
+            if (quickStartTab) {
+              // Manually trigger the tab switching logic
+              const tabContainer = quickStartTab.closest('.section-tabs');
+              if (tabContainer) {
+                // Remove active class from all buttons and panes
+                tabContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                tabContainer.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to quick-start button and pane
+                quickStartTab.classList.add('active');
+                const quickStartPane = document.querySelector('#quick-start-tab');
+                if (quickStartPane) {
+                  quickStartPane.classList.add('active');
+                }
+              }
+            }
+          }, 500); // Same delay for consistency
+        }
       }
     });
   });
