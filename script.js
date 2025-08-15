@@ -501,28 +501,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function handleInstallClick() {
-        // Debug: Log detection values
-        console.log('User Agent:', navigator.userAgent);
-        console.log('Max Touch Points:', navigator.maxTouchPoints);
-        console.log('Window Width:', window.innerWidth);
-        console.log('User Agent Mobile Test:', /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-        console.log('Touch Points Test:', navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
-        
         // Check if device is mobile/tablet
         const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
                               (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
         
-        console.log('Final isMobileDevice result:', isMobileDevice);
-        
         if (isMobileDevice) {
             // On mobile devices, scroll to installation section instead of showing modal
-            console.log('Mobile detected - scrolling to installation section');
             const installationSection = document.querySelector('#installation');
             if (installationSection) {
                 installationSection.scrollIntoView({ behavior: 'smooth' });
             }
         } else {
-            console.log('Desktop detected - showing editor selection modal');
             showEditorSelectionModal();
         }
     }
